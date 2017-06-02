@@ -15,7 +15,7 @@ angular
                 url: '/',
                 controller: 'DirectoryManagement as DirectoryManagement',
                 templateUrl: 'modules/directory/main.html'
-            })
+            });
 
         $urlRouterProvider.otherwise('/');
         $locationProvider.hashPrefix('');

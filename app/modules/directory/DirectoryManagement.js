@@ -12,13 +12,11 @@ angular
     .controller('DirectoryManagement', [
         '$scope', 'DirectoryService',
         function ($scope, DirectoryService) {
-            var directoryManagement = this;
 
             function getDir(dir, path) {
-                dir.forEach( function(obj, index) {
-                    var a = obj.path.split('/');
-                    var i, flag = 1;
-                    for(i = 0; i < a.length; i++) {
+                dir.forEach(function(obj) {
+                    var a = obj.path.split('/'), i, flag = 1;
+                    for (i = 0; i < a.length; i++) {
                         if (a[i] === path[i]) {
                             continue;
                         } else {

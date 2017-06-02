@@ -10,7 +10,7 @@ Check `node --version && npm --version && bower --version` for their versions.
 
 ## Setup
 
-`git clone https://github.com/amanmehta25/image-flipper-game.git`
+`git clone https://github.com/amanmehta25/directory-structure.git`
 
 Get into root directory of this application
 
