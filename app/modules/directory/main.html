@@ -1,0 +1,12 @@
+<div class="main-container">
+    <div class="main-container__heading">Directory Structure Implementation</div>
+    <div ng-click="prevDir()" ng-show="currPath">
+        <span class="cursor pull-left"><- Back</span>
+        <span class="pull-right">PWD: {{ currPath }}</span>
+    </div>
+    <div class="clear"></div>
+    <div ng-hide="currPath">Root Directory</div>
+    <div class="folder" ng-repeat="folder in currDirectory">
+        <div class="folder__subfolder" ng-click="nextDir(folder)">{{ folder.name }}</div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+[
+    {
+        "type": "folder",
+        "name": "animals",
+        "path": "/animals",
+        "children": [
+            {
+                "type": "folder",
+                "name": "cat",
+                "path": "/animals/cat",
+                "children": [
+                    {
+                        "type": "folder",
+                        "name": "images",
+                        "path": "/animals/cat/images",
+                        "children": [
+                            {
+                                "type": "file",
+                                "name": "cat001.jpg",
+                                "path": "/animals/cat/images/cat001.jpg"
+                            },
+                            {
+                                "type": "file",
+                                "name": "cat002.jpg",
+                                "path": "/animals/cat/images/cat002.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "folder",
+                "name": "dog",
+                "path": "/animals/dog",
+                "children": [
+                    {
+                        "type": "folder",
+                        "name": "images",
+                        "path": "/animals/dog/images",
+                        "children": [
+                            {
+                                "type": "file",
+                                "name": "dog001.jpg",
+                                "path": "/animals/dog/images/dog001.jpg"
+                            },
+                            {
+                                "type": "file",
+                                "name": "dog002.jpg",
+                                "path": "/animals/dog/images/dog002.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "folder",
+        "name": "cars",
+        "path": "/cars",
+        "children": [
+            {
+                "type": "folder",
+                "name": "honda",
+                "path": "/cars/honda",
+                "children": [
+                    {
+                        "type": "folder",
+                        "name": "images",
+                        "path": "/cars/honda/images",
+                        "children": [
+                            {
+                                "type": "file",
+                                "name": "honda001.jpg",
+                                "path": "/cars/honda/images/honda001.jpg"
+                            },
+                            {
+                                "type": "file",
+                                "name": "honda002.jpg",
+                                "path": "/cars/honda/images/honda002.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "folder",
+                "name": "maruti",
+                "path": "/cars/maruti",
+                "children": [
+                    {
+                        "type": "folder",
+                        "name": "images",
+                        "path": "/cars/maruti/images",
+                        "children": [
+                            {
+                                "type": "file",
+                                "name": "maruti001.jpg",
+                                "path": "/cars/maruti/images/maruti001.jpg"
+                            },
+                            {
+                                "type": "file",
+                                "name": "maruti002.jpg",
+                                "path": "/cars/maruti/images/maruti002.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "folder",
+                "name": "audi",
+                "path": "/cars/audi",
+                "children": [
+                    {
+                        "type": "folder",
+                        "name": "images",
+                        "path": "/cars/audi/images",
+                        "children": [
+                            {
+                                "type": "file",
+                                "name": "audi001.jpg",
+                                "path": "/cars/audi/images/audi001.jpg"
+                            },
+                            {
+                                "type": "file",
+                                "name": "audi002.jpg",
+                                "path": "/cars/audi/images/audi002.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

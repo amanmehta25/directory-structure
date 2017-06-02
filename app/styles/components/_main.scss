@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the main component.
+// -----------------------------------------------------------------------------
+.main-container {
+    margin: 52px auto;
+    max-width: 540px;
+    text-align: center;
+}
+
+.main-container__heading {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.folder {
+    margin: 20px 0;
+}
+
+.folder__subfolder {
+    background: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px;
+}
+
+@media only screen and (max-width: 576px) {
+    .main-container {
+        margin: 40px 20px;
+    }
+}
