@@ -1,7 +1,7 @@
 'use strict';
 /**
  * @ngdoc services
- * @name merchantApp.services: DirectoryService
+ * @name directoryStructure.services: DirectoryService
  * @description
  * # Directory Service to get the folders
  */

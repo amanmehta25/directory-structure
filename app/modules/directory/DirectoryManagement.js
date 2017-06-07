@@ -13,9 +13,11 @@ angular
         '$scope', 'DirectoryService',
         function ($scope, DirectoryService) {
 
-            function getDir(dir, path) {
-                dir.forEach(function(obj) {
-                    var a = obj.path.split('/'), i, flag = 1;
+            var directory, childDirectory;
+
+            function previousDirectory(directory, path) {
+                directory.forEach(function(subDir) {
+                    var a = subDir.path.split('/'), i, flag = 1;
                     for (i = 0; i < a.length; i++) {
                         if (a[i] === path[i]) {
                             continue;
@@ -25,35 +27,100 @@ angular
                         }
                     }
                     if (a.length === path.length) {
-                        $scope.newDirectory.push(obj);
+                        $scope.newDirectory.push(subDir);
                     }
                     if (flag) {
-                        getDir(obj.children, path);
+                        previousDirectory(subDir.children, path);
+                    }
+                });
+            }
+
+            function createDirectory(directory, newDirectory, path) {
+                directory.forEach(function(subDir) {
+                    var a = subDir.path.split('/'), i, flag = 1;
+                    for (i = 0; i < a.length; i++) {
+                        if (a[i] === path[i]) {
+                            continue;
+                        } else {
+                            flag = 0;
+                            break;
+                        }
+                    }
+                    if (a.length === path.length && flag) {
+                        subDir.children.push(newDirectory);
+                    } else if (flag) {
+                        createDirectory(subDir.children, newDirectory, path);
+                    }
+                });
+            }
+
+            function removeDirectory(directory, childDirectory, folder) {
+                childDirectory.forEach(function(subDir, index) {
+                    var a = subDir.path.split('/'),
+                        path = folder.path.split('/'),
+                        flag = 1,
+                        i;
+                    for (i = 0; i < a.length; i++) {
+                        if (a[i] === path[i]) {
+                            continue;
+                        } else {
+                            flag = 0;
+                            break;
+                        }
+                    }
+                    if (a.length === path.length && flag) {
+                        directory.children.splice(index, 1);
+                    } else if (flag) {
+                        removeDirectory(subDir, subDir.children, folder);
                     }
                 });
             }
 
             DirectoryService.getFolders().then(function (response) {
-                $scope.directory = response.data;
-                $scope.currDirectory = angular.copy($scope.directory);
+                directory = response.data[0];
+                childDirectory = directory.children;
+                $scope.currDirectory = angular.copy(childDirectory);
             });
 
-            $scope.prevDir = function() {
+            $scope.create = function() {
+                var length = $scope.currDirectory.length,
+                    newDirectory = {
+                        type: 'folder',
+                        name: 'new-' + length,
+                        path: ($scope.currPath ? $scope.currPath : '') + '/new-' + length,
+                        children: []
+                    },
+                    path;
+
+                $scope.currDirectory.push(newDirectory);
+
+                if (!$scope.currPath) {
+                    childDirectory.push(newDirectory);
+                } else {
+                    path = $scope.currPath.split('/');
+                    createDirectory(childDirectory, newDirectory, path);
+                }
+            };
+
+            $scope.previous = function() {
                 var path = $scope.currPath.split('/');
                 $scope.newDirectory = [];
-                getDir($scope.directory, path);
+                previousDirectory(childDirectory, path);
                 path.pop();
                 $scope.currPath = path.join('/');
                 $scope.currDirectory = angular.copy($scope.newDirectory);
             };
 
-            $scope.nextDir = function(folder) {
-                if (folder.type === 'folder' && folder.children.length) {
+            $scope.next = function(folder) {
+                if (folder.type === 'folder') {
                     $scope.currPath = folder.path;
-                    $scope.currDirectory = folder.children;
-                } else {
-                    console.log('its a ' + folder.type);
+                    $scope.currDirectory = angular.copy(folder.children);
                 }
+            };
+
+            $scope.remove = function(folder, index) {
+                removeDirectory(directory, childDirectory, folder);
+                $scope.currDirectory.splice(index, 1);
             };
         }
     ]);

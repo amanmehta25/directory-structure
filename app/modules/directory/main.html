@@ -1,12 +1,16 @@
 <div class="main-container">
     <div class="main-container__heading">Directory Structure Implementation</div>
-    <div ng-click="prevDir()" ng-show="currPath">
-        <span class="cursor pull-left"><- Back</span>
+    <div class="font-size--medium" ng-show="currPath">
+        <span class="cursor pull-left" ng-click="previous()"><- Back</span>
         <span class="pull-right">PWD: {{ currPath }}</span>
     </div>
-    <div class="clear"></div>
-    <div ng-hide="currPath">Root Directory</div>
+    <div class="clear" />
+    <div class="font-size--medium" ng-hide="currPath">Root Directory</div>
+    <button class="btn create-new-btn" ng-click="create()">Create New Directory</button>
     <div class="folder" ng-repeat="folder in currDirectory">
-        <div class="folder__subfolder" ng-click="nextDir(folder)">{{ folder.name }}</div>
+        <div class="folder__subfolder" ng-dblclick="next(folder)">
+            <span class="folder__subfolder-name">{{ folder.name }}</span>
+            <span ng-click="remove(folder, $index)">x</span>
+        </div>
     </div>
 </div>

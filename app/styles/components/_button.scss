@@ -1,0 +1,16 @@
+.btn {
+    background: $color-orange;
+    border: 1px solid $color-orange;
+    color: $color-white;
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 8px;
+    width: 160px;
+}
+
+.btn:hover,
+.btn:focus {
+    color: $color-white;
+    outline: none;
+    text-decoration: none;
+}
